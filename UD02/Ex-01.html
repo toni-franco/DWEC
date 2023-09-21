@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Funció factorial recursiva</title>
+
+</head>
+
+<body>
+    <h1>Funció factorial recursiva</h1>
+    <p id="p1"></p>
+
+    <script>
+
+        let num1 = factorialRecursiu(5);
+        let num2 = factorialRecursiu(6);
+        let num3 = factorialRecursiu(7);
+        document.getElementById("p1").innerHTML = num1 + num2 + num3;
+        function factorialRecursiu(n) {
+            if (n == 0) {
+                return 1;
+            }
+            return n * factorialRecursiu(n - 1);
+        }
+    </script>
+
+</body>
+
+</html>
