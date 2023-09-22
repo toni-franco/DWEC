@@ -16,11 +16,15 @@
 <script>
     let llista = document.getElementById('llista');
     let nouElementLlista = document.createElement('li');
+    nouElementLlista.setAttribute('id',"pepe");
+    //nouElementLlista.id="jose"
+
     llista.append(nouElementLlista);
     nouElementLlista.innerHTML = 'Elemento añadido';
 
     function Eliminar_elemento(){
-        document.getElementById('Elemento2').remove()
+        document.getElementById('Elemento2').remove();
+        document.getElementById('pepe').remove()
     }
 
 </script>
