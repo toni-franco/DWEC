@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="seleccio">
+        <option value="Barcelona">Barcelona</option>
+    </select>
+
+    <button onclick="CambiarEleSelec()">Modificar elemento seleccionado</button>
+
+    <script>
+        let seleccio = document.getElementById('seleccio');
+
+        let novaOpcio1 = document.createElement('option');
+        seleccio.append(novaOpcio1);
+        novaOpcio1.innerHTML = "Girona";
+
+        let novaOpcio2 = document.createElement('option');
+        seleccio.append(novaOpcio2);
+        novaOpcio2.innerHTML = "Lleida";
+
+        let novaOpcio3 = document.createElement('option');
+        seleccio.append(novaOpcio3);
+        novaOpcio3.innerHTML = "Tarragona";
+
+        function CambiarEleSelec() {
+            let seleccio = document.getElementById('seleccio');
+            console.log( seleccio.selectedIndex)
+            console.log(seleccio.options[2].innerHTML)
+            seleccio.options[seleccio.selectedIndex].innerHTML="jaajaa"
+        }
+
+    </script>
+</body>
+
+</html>
