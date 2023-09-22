@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="titol">Aquest és el títol</h1>
+    <h2 id="subtitol">Aquest és el subtítol</h2>
+    <label>Nou text:</label>
+    <input id="entradaTitol" />
+    <label>Selecciona:</label>
+    <select id="selectTitol">
+        <option value="Aquest és el primer subtítol">Primer</option>
+        <option value="Aquest és el segon subtítol">Segon</option>
+        <option value="Aquest és l’últim subtítol">Últim</option>
+    </select>
+
+    <button onclick="canviar();">Canviar Títols</button>
+
+    <script>
+        let nodeTitol = document.getElementById('titol');
+        let nodeSubtitol = document.getElementById('subtitol');
+        let nodeEntrada = document.getElementById('entradaTitol');
+        let nodeSelect = document.getElementById('selectTitol');
+        nodeEntrada.value = "nou títol";
+        console.log(nodeSubtitol.textContent);
+        
+        function canviar() {
+
+            nodeTitol.innerHTML = nodeEntrada.value;
+            nodeSubtitol.innerHTML = nodeSelect.value;
+        }
+    </script>
+</body>
+
+</html>
