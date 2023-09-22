@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<ul id="llista">
+
+    <li>aaaa</li>
+    <li id="Elemento2">bbb</li>
+</ul>
+<button onclick="Eliminar_elemento()">Eliminar elemento 2</button>
+
+<script>
+    let llista = document.getElementById('llista');
+    let nouElementLlista = document.createElement('li');
+    llista.append(nouElementLlista);
+    nouElementLlista.innerHTML = 'Elemento añadido';
+
+    function Eliminar_elemento(){
+        document.getElementById('Elemento2').remove()
+    }
+
+</script>
+
+</body>
+
+</html>
