@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="radio" name="porta" id="boto-obert" value="oberta" checked />
+    <input type="radio" name="porta" id="boto-tancat" value="tancada" />
+    <br>
+    <script>
+        let botoTancat = document.getElementById('boto-tancat');
+        botoTancat.checked = true;
+    </script>
+
+    <input type="checkbox" id="opcio1" value="groc" checked /><label>Groc</label>
+    <input type="checkbox" id="opcio2" value="vermell" /><label>Vermell</label>
+    <input type="checkbox" id="opcio3" value="blau" /><label>Blau</label>
+
+    <script>
+        let opcio3 = document.getElementById('opcio3');
+        opcio3.checked = true;
+    </script>
+    <!-- <button onclick="calcular();">Calcular</button> -->
+
+
+</body>
+
+</html>
