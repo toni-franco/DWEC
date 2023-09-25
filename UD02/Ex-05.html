@@ -9,11 +9,13 @@
 
 <body>
     <input type="radio" name="porta" id="boto-obert" value="oberta" checked />
-    <input type="radio" name="porta" id="boto-tancat" value="tancada" />
+    <input type="radio" name="porta" id="boto-tancat" onclick="alert('hola')" value="tancada" />
+ 
     <br>
     <script>
         let botoTancat = document.getElementById('boto-tancat');
         botoTancat.checked = true;
+      
     </script>
 
     <input type="checkbox" id="opcio1" value="groc" checked /><label>Groc</label>
