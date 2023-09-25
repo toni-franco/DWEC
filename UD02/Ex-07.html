@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let patro1 = /ioc/i
+        let patro2 = /ioc/
+        let cad = "Curs de JavaScript de l’IOC";
+        console.log(patro1.test(cad));
+        console.log(patro2.test(cad));
+        let res = cad.match(patro1);
+        console.log(res.length); //1, una sola ocurrència
+        console.log(res[0]); //IO
+
+    </script>
+
+</body>
+
+</html>
