@@ -12,11 +12,17 @@
         let patro1 = /ioc/i
         let patro2 = /ioc/
         let cad = "Curs de JavaScript de l’IOC";
-        console.log(patro1.test(cad));
+        console.log(  patro1.test(cad));
         console.log(patro2.test(cad));
         let res = cad.match(patro1);
         console.log(res.length); //1, una sola ocurrència
         console.log(res[0]); //IO
+        regexp = /^(3[01]|[12][0-9]|0?[1-9])\/(1[0-2]|0?[1-9])\/([0-9]{2})?[0-9]{2}$/;
+        console.log(regexp.test("01/01/2016")); //true
+        console.log(regexp.test("2016/01/01")); //false
+        console.log(regexp.test("01/01/16")); //true
+        console.log(regexp.test("1/1/16")); //true
+        console.log(regexp.test("IOC")); //false
 
     </script>
 
