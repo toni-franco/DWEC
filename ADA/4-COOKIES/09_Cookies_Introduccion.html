@@ -19,21 +19,30 @@
         //document.cookie ="usuario = Ada Lovelace; expires=Thu, 16 Nov 2017 12:00:00 UTC; path=/;";
         document.cookie = "usuario = Ada Lovelace;";
         document.cookie = "sexo = mujer;";
-        
-        //Leer una cookie
+
+        document.cookie = "idioma = catala; max-age=3600; path=/";
+        let arrayCookies = document.cookie.split("; ");
+
+        var now = new Date();
+        now.setTime(now.getTime() + 1 * 3600 * 1000);
+        document.cookie = "name=value; expires=" + now.toUTCString() + "; path=/";
+        console.log(arrayCookies)
+
+        //Leer una cookie   
         var miCookie = document.cookie;
         alert(miCookie);
-        
+
         //Modificar una cookie
         document.cookie = "sexo = hombre;";
+        console.log(document.cookie);
         alert(document.cookie);
-        
+
         //Borrar una cookie
         //document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:01 GMT";
         //document.cookie = "sexo=; expires=Thu, 01 Jan 1970 00:00:01 GMT";
         alert(document.cookie);        
     </script>
-    
+
 </body>
 
 </html>

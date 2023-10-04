@@ -15,12 +15,10 @@
 
         <script>
             var hoy = new Date();
-            var nacimiento = new Date('2003, 4, 12');
+            var nacimiento = new Date('1989, 9, 21');
             var edad = (hoy.getFullYear() - nacimiento.getFullYear());
-            var meses = hoy.getMonth() - nacimiento.getMonth()-1;
-
-            var dias =  nacimiento.getDate()>hoy.getDate() ? nacimiento.getDate() - hoy.getDate() :  
-            hoy.getDate() - nacimiento.getDate();
+            var meses = hoy.getMonth() - nacimiento.getMonth();
+            var dias = hoy.getDate() - nacimiento.getDate();
 
             // Comprobar si meses es anterior al actual para restar 1 al año
             if (meses < 0 || (meses === 0 && hoy.getDate() < nacimiento.getDate())) {

@@ -1,40 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Calcular Milisegundos hasta fin de Año</title>
+       
+    </head>
 
-<head>
-    <meta charset="utf-8">
-    <title>Calcular Milisegundos hasta fin de Año</title>
+    <body>
+        <h1 id="titulo1">Calcular Milisegundos hasta fin de Año</h1>
+        <div class="resultado">
+            Recarga la página para actualizar el cálculo.
+        </div>
 
-</head>
-
-<body>
-    <h1 id="titulo1">Calcular Milisegundos hasta fin de Año</h1>
-    <div class="resultado">
-        Recarga la página para actualizar el cálculo.
-    </div>
-
-    <script>
-        function diasEnUnMes(mes, año) {
-            mes = mes.toUpperCase();
-            var meses = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
-            return new Date(año, meses.indexOf(mes) + 1, 0).getDate();
-        }
-
-        var hoy = (new Date()).getTime();
-        document.writeln("<br />Hoy → " + hoy);
-        var fin_anio = (new Date('2023/12/31')).getTime();
-        document.writeln("<br />Fin de año → " + fin_anio);
-        var dif = new Date(fin_anio - hoy);
-        
-
-        dias_faltan = diasEnUnMes("OCTUBRE", 10) - dif.getDay()
+        <script>
+            var hoy = (new Date()).getTime();
+            document.writeln("<br />Hoy → " + hoy);
+            var fin_anio = (new Date('12/31/2023')).getTime();
+            document.writeln("<br />Fin de año → " + fin_anio);
 
             document.writeln("<br />Diferencia en milisegundos → " + (fin_anio - hoy));
-        document.writeln("<br />Tiempo restante meses → " + dif.getMonth());
-        document.writeln("<br />Tiempo restante dies → " + dias_faltan);
-
-
-    </script>
-</body>
-
+            document.writeln("<br />Tiempo restante restantes → " + (fin_anio - hoy).getDate());
+        </script>
+    </body>
 </html>
