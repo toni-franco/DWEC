@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;
+charset=utf-8">
+    <title>Exemple sessionStorage. Vegetal</title>
+    <script>
+        function guardar() {
+            let vegetal = document.getElementById("nomvegetal")
+                .value;
+            /*Guardem les dades en el sessionStorage*/
+            sessionStorage.setItem("vegetal", vegetal);
+            /* netegem els camps */
+            document.getElementById("nomvegetal").value = "";
+            document.getElementById("lblvegetal").value = "";
+            document.getElementById("lblvegetal").value = "";
+        };
+
+        function carregar() {
+            let animal = sessionStorage.getItem("animal");
+            let vegetal = sessionStorage.getItem("vegetal");
+            document.getElementById("lblanimal").innerHTML =
+                animal;
+            document.getElementById("lblvegetal").innerHTML =
+                vegetal;
+        }
+    </script>
+</head>
+<center>
+    <h1>Exemple sessionStorage</h1>
+    <input type="text" placeholder="nom vegetal" id="
+nomvegetal"><br />
+    <button onclick="guardar()">Guardar</button>
+    <button onclick="carregar()">Carregar</button><br />
+    Animal: <label id="lblanimal"></label><br />
+    Vegetal: <label id="lblvegetal"></label><br />
+    <a href="animal.html">animal.html</a>
+    </body>
+
+</html>
