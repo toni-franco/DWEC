@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Persona {
+            constructor(nom, cognom) {
+                this._nom = nom;
+                this._cognom = cognom;
+            }
+
+            set nom(nom) {
+                this._nom = nom;
+            }
+
+            get nom() {
+                return this._nom;
+            }
+
+            set cognom(cognom) {
+                this._cognom = cognom;
+            }
+
+            get cognom() {
+                return this._cognom;
+            }
+
+            get nomComplet() {
+                return `${ this._nom } ${ this._cognom }`;
+            }
+        }
+
+        let ricard = new Persona('Ricard', 'Ensutjs');
+
+        console.log('Nom(amb accessor):', ricard.nom);
+        console.log('Cognom(amb accessor):', ricard.cognom);
+        console.log('Nom complet:', ricard.nomComplet);
+        console.log('Nom(propietat):', ricard._nom);
+        console.log('Cognom(propietat):', ricard._cognom);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Criatura {
+            constructor() {
+                this.nom = 'Criatura de tipus desconegut';
+                this.moviment = 10;
+                this.potencia = 1;
+            }
+
+            caminar() {
+                console.log(`${this.nom} camina ${this.moviment} metres`);
+            }
+
+            atacar(objectiu) {
+                console.log(`${this.nom} ataca a ${objectiu.nom} i li causa ${this.potencia
+                    } punts de dany`);
+            }
+        }
+
+        class Gos extends Criatura {
+            constructor() {
+                super();
+                this.nom = "Gos";
+                this.potencia = 2;
+            }
+
+            saltar() {
+                console.log(`${this.nom} salta ${this.moviment / 5} metres`);
+            }
+        }
+
+        class GosZombi extends Gos {
+            constructor() {
+                super();
+                this.nom = "Gos Zombi";
+            }
+
+            saltar() {
+                console.log(`${this.nom} intenta saltar... però no pot`);
+            }
+        }
+
+        // Es generen les instancies del objectes a partir de les classes
+        let gos = new Gos(),
+            gosZombi = new GosZombi();
+
+        gos.caminar();
+        gos.atacar(gosZombi);
+        gos.saltar();
+        gosZombi.atacar(gos);
+        gosZombi.saltar();
+        gosZombi.caminar();
+    </script>
+</body>
+
+</html>

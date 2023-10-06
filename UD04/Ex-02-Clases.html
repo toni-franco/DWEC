@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Persona {
+            constructor(nom, edat, ocupacio) {
+                this.nom = nom;
+                this.edat = edat;
+                this.ocupacio = ocupacio;
+            }
+            saludar() {
+                console.log(`Hola, em dic ${this.nom}, tinc ${this.edat} anys i sóc ${this.ocupacio}`);
+            }
+        }
+
+        let ricard = new Persona("Ricard", 40, "Policia");
+        ricard.saludar();
+    </script>
+</body>
+
+</html>
