@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>EO-001</title>
+    </title>
+</head>
+
+<body>
+    <script>
+        // --------------------------------- Vehiculo ---------------------------------
+        class Vehiculo {
+            constructor(marca, modelo, color, fabricacion, cilindrada) {
+                this.marca = marca;
+                this.modelo = modelo;
+                this.color = color;
+                this.fabricacion = fabricacion;
+                this.cilindrada = cilindrada;
+            }
+            get marca() {
+                return this.marca;
+            }
+            get modelo() {
+                return this.modelo;
+            }
+            get color() {
+                return this.color;
+            }
+            get fabricacion() {
+                return this.fabricacion;
+            }
+            get cilindrada() {
+                return this.cilindrada;
+            }
+            acelerar() {
+                return "Se acelera"
+            }
+            frenar() {
+                return "Se frena"
+            }
+            mostrarDatos() {
+
+            }
+        }
+
+
+
+        //----------------------Vehiculo prototype------------------------------------
+        function VehiculoPrototype(marca, modelo, color, fabricacion, cilindrada) {
+            this.marca = marca;
+            this.modelo = modelo;
+            this.color = color;
+            this.fabricacion = fabricacion;
+            this.cilindrada = cilindrada;
+
+            this.acelerar = function () {
+                return "Se acelera";
+            }
+            this.frenar = function () {
+                return "Se frena";
+            }
+            this.mostrarDatos = function (tipo) {
+                if (tipo == 0) {
+                    return ("Marca: " + this.marca + ", Modelo: " + this.modelo + ", Color: " + this.color + " ,Fabricacion: " + this.fabricacion + " ,Cilindrada: " + this.cilindrada);
+                } else {
+
+                }
+            }
+        }
+        //----------------------Todoterreno prototype------------------------------------
+        function TodoterrenoPrototype(marca, modelo, color, fabricacion, cilindrada, traccion) {
+            VehiculoPrototype.call(this, marca, modelo, color, fabricacion, cilindrada)
+            traccion = this.traccion;
+            this.mostrarDatos = function () {
+                return ("Marca: " + this.marca + ", Modelo: " + this.modelo + ", Color: " + this.color + " ,Fabricacion: " + this.fabricacion + " ,Cilindrada: " + this.cilindrada + " ,Traccion: " + this.traccion);
+            }
+
+        }
+
+
+        //==============================================================================
+        var furgoneta = new VehiculoPrototype("Ford", "Mustang", "Negro mate", "xd", "xd");
+        furgoneta.traccion = 20;
+        console.log(furgoneta.mostrarDatos(0));
+
+        TodoterrenoPrototype.prototype = new VehiculoPrototype();
+        console.log(TodoterrenoPrototype.prototype.mostrarDatos(0));
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
