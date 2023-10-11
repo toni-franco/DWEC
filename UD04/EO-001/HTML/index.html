@@ -1,98 +1,159 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>EO-001</title>
-    </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-
 <body>
     <script>
-        // --------------------------------- Vehiculo ---------------------------------
+
+        document.write("<h2>Function & Prototype</h2>");    
+            function vehiculo(marca,modelo,color,fabricacion,cilindrada) {
+                this.marca = marca;
+                this.modelo = modelo;
+                this.color = color;
+                this.fabricacion = fabricacion;
+                this.cilindrada = cilindrada;
+                this.kilometros = 15;
+            }
+
+
+            function furgoneta(marca,modelo,color,fabricacion,cilindrada,pasajeros) {
+                vehiculo.call(this, marca, modelo, color, fabricacion,cilindrada);
+                this.pasajeros = pasajeros;
+            }   
+
+            furgoneta.prototype = new vehiculo();
+            furgoneta.prototype.constructor = furgoneta;
+
+            function todoterreno(marca,modelo,color,fabricacion,cilindrada,traccion) {
+                vehiculo.call(this,marca,modelo,color,fabricacion,cilindrada);
+                this.traccion = traccion;
+            }   
+
+            todoterreno.prototype = new vehiculo();
+            todoterreno.prototype.constructor = todoterreno;
+
+            vehiculo.prototype.acelerar = function(){
+                this.kilometros = this.kilometros + 15;
+                if(this.kilometros<0){
+                    this.kilometros=0;
+                }
+            document.write("Se acelera KILOMETROS: " + this.kilometros +"<br>");
+            }
+
+            vehiculo.prototype.frenar = function(){
+                this.kilometros = this.kilometros - 15;
+                if(this.kilometros<0){
+                    this.kilometros=0;
+                }
+            document.write("Se frenar KILOMETROS: " + this.kilometros +"<br>");
+            } 
+            
+            vehiculo.prototype.mostrarDatos = function(tipo){
+                document.write("MARCA: " + this.marca + " MODELO: " + this.modelo + " COLOR: " + this.color + " FABRICACIÓN: " + this.fabricacion + " CILINDRADA: " + this.cilindrada);
+                if(tipo==1){
+                    document.write(" PASAJEROS: " + this.pasajeros + "<br>");
+                }else{
+                    document.write(" RUEDAS: " + this.traccion + "<br>");
+                }
+            }
+            document.write("<h4>Furgoneta<br></h4>");
+           var vh1 = new furgoneta('Ford','JX487','rojo','Madrid','1400cc','10');
+           vh1.mostrarDatos(1);
+           vh1.acelerar();
+           vh1.acelerar();
+           vh1.acelerar();
+           vh1.frenar();
+           document.write("<h4>Todoterreno<br></h4>");
+           var vh2 = new todoterreno('Toyota','23423','amarillo','Paris','1300cc','5');
+           vh2.mostrarDatos(2);
+           vh2.acelerar();
+           vh2.acelerar();
+           vh2.frenar();
+           vh2.frenar();
+  
+    </script>
+
+
+    <script>
+    
+        document.write("<h2>ES6 <br></h2>");
+        
         class Vehiculo {
+
             constructor(marca, modelo, color, fabricacion, cilindrada) {
                 this.marca = marca;
                 this.modelo = modelo;
                 this.color = color;
                 this.fabricacion = fabricacion;
                 this.cilindrada = cilindrada;
+                this.velocidad = 10;
             }
-            get marca() {
-                return this.marca;
-            }
-            get modelo() {
-                return this.modelo;
-            }
-            get color() {
-                return this.color;
-            }
-            get fabricacion() {
-                return this.fabricacion;
-            }
-            get cilindrada() {
-                return this.cilindrada;
-            }
-            acelerar() {
-                return "Se acelera"
-            }
-            frenar() {
-                return "Se frena"
-            }
-            mostrarDatos() {
 
-            }
-        }
-
-
-
-        //----------------------Vehiculo prototype------------------------------------
-        function VehiculoPrototype(marca, modelo, color, fabricacion, cilindrada) {
-            this.marca = marca;
-            this.modelo = modelo;
-            this.color = color;
-            this.fabricacion = fabricacion;
-            this.cilindrada = cilindrada;
-
-            this.acelerar = function () {
-                return "Se acelera";
-            }
-            this.frenar = function () {
-                return "Se frena";
-            }
-            this.mostrarDatos = function (tipo) {
-                if (tipo == 0) {
-                    return ("Marca: " + this.marca + ", Modelo: " + this.modelo + ", Color: " + this.color + " ,Fabricacion: " + this.fabricacion + " ,Cilindrada: " + this.cilindrada);
-                } else {
-
+            mostrarDatos(tipo) {
+                document.write("MARCA: " + this.marca + " MODELO: " + this.modelo + " COLOR: " + this.color + " FABRICACIÓN: " + this.fabricacion + " CILINDRADA: " + this.cilindrada);
+                if(tipo==1){
+                    document.write(" PASAJEROS: " + this.pasajeros + "<br>");
+                }else{
+                    document.write(" RUEDAS: " + this.traccion + "<br>");
                 }
             }
-        }
-        //----------------------Todoterreno prototype------------------------------------
-        function TodoterrenoPrototype(marca, modelo, color, fabricacion, cilindrada, traccion) {
-            VehiculoPrototype.call(this, marca, modelo, color, fabricacion, cilindrada)
-            traccion = this.traccion;
-            this.mostrarDatos = function () {
-                return ("Marca: " + this.marca + ", Modelo: " + this.modelo + ", Color: " + this.color + " ,Fabricacion: " + this.fabricacion + " ,Cilindrada: " + this.cilindrada + " ,Traccion: " + this.traccion);
+
+            acelerar() {
+                this.velocidad = this.velocidad +10;
+                if(this.velocidad<0){
+                    this.velocidad=0;
+                }
+                document.write("Se acelera VELOCIDAD: "+this.velocidad +"<br>");
             }
 
+            frenar() {
+                this.velocidad = this.velocidad -10;
+                if(this.velocidad<0){
+                    this.velocidad=0;
+                }
+                document.write("Se frena VELOCIDAD: "+this.velocidad +"<br>");
+            }
         }
 
+        class Furgoneta extends Vehiculo {
+            constructor(marca, modelo, color, fabricacion, cilindrada, pasajeros) {
+                super(marca, modelo, color, fabricacion, cilindrada);
+                this.pasajeros = pasajeros;
+            }
+        }
 
-        //==============================================================================
-        var furgoneta = new VehiculoPrototype("Ford", "Mustang", "Negro mate", "xd", "xd");
-        furgoneta.traccion = 20;
-        console.log(furgoneta.mostrarDatos(0));
+        class Todoterreno extends Vehiculo {
+            constructor(marca, modelo, color, fabricacion, cilindrada, traccion) {
+                super(marca, modelo, color, fabricacion, cilindrada);
+                this.traccion = traccion;
+            }
+        }
+        
+        document.write("<h4>Furgoneta<br></h4>");
 
-        TodoterrenoPrototype.prototype = new VehiculoPrototype();
-        console.log(TodoterrenoPrototype.prototype.mostrarDatos(0));
+        const f1=new Furgoneta('Audi','38291EX','violeta','Budapest','2000cc','4');
 
+        f1.mostrarDatos(1);
+        f1.acelerar();
+        f1.frenar();
+       
+
+        document.write("<h4>Todoterreno<br></h4>");
+
+        const t1=new Todoterreno('Toyota','4783094','verde','Valencia','1500cc','8');
+
+        t1.mostrarDatos(2);
+        t1.acelerar();
+        t1.frenar();
+        t1.frenar();
+        t1.frenar();
+        t1.frenar();
+      
     </script>
 
-
-
-
-
 </body>
-
 </html>
