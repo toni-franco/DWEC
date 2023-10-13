@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./validar.js"></script>
+</head>
+<body>
+    
+
+    <form id="formulario" name="fvalida">
+        <table>
+        <tr>
+               <td>Nombre: </td>
+               <td><input type="text" name="nombre" size="30" maxlength="100"></td>
+        </tr>
+        <tr>
+               <td>Edad: </td>
+               <td>
+                    <input type="text" id="edad" name="edad" size="3" maxlength="2">
+                    <div id="validaEdad"></div>
+               </td>
+        </tr>
+        <tr>
+               <td>Interés:</td>
+               <td>
+               <select name=interes>
+               <option value="Elegir">Elegir
+               <option value="Comercial">Contacto comercial
+               <option value="Clientes">Atención al cliente
+               <option value="Proveedores">Contacto de proveedores
+               </select>
+               <div id="validaInteres"> </div>
+               </td>
+        </tr>
+        <tr>
+              <!-- <td colspan="2" align="center"><input type="button" value="Enviar" onclick="valida_envia()"></td>  -->
+              <td colspan="2" align="center"><input id="Enviar" type="button" value="Enviar"></td> 
+        </tr>
+        </table>
+       
+        </form>
+</body>
+</html>
+
+
+
+
