@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <style>
+      div {
+        margin-top: 60px;
+        text-align: left;
+      }
+
+      #buscarN {
+        margin-bottom: 20px;        
+      }
+      #mensajeError{
+        color: red;
+      }
+
+   
+    </style>
+    <title>FORMULARIO CLIENTE</title>
+  </head>
+
+  <body>
+    <div>
+      <label for="buscarNombre">BUSCAR POR NOMBRE:</label><br /><br />
+      <input type="text" id="buscarNombre" />
+      <button id="buscarN">BUSCAR</button>
+      <form>
+        <input type="text" id="id_cliente" /><br />
+        <label for="title">Title<br /></label>
+        <input type="radio" name="title" id="mr" value="mr" />Mr
+        <input type="radio" name="title" id="mrs" value="mrs" />Mrs
+        <input type="radio" name="title" id="miss" value="miss" />Miss
+
+        <br />
+        <label for="firstname">First name</label><br />
+        <input type="text" id="firstname"  size="30"  pattern="[A-Za-z ]{5} title="Introduce entre 2 y 30 letras sin acentos" required />
+
+        <br />
+        <label for="lastname">Last name</label><br />
+        <input type="text" id="lastname"  maxlength="30"/> Tiene validación
+
+        <br />
+        <label for="email">Email</label> <br />
+        <input type="text" id="email" pattern="/\S+@\S+\.\S+/"/>
+
+        <br />
+        <label for="phone">Phone number</label><br />
+        <input type="text" id="phone" pattern="[0-9]{9} title="Numero de 9 cifras" />
+
+        <br />
+        <label for="password">Password</label><br />
+        <input type="password" id="password" />
+
+        <br />
+        <label for="country">Country</label><br />
+        <select name="country" id="country">
+          <option value="-">-</option>
+          <option value="China">China</option>
+          <option value="Germany">Germany</option>
+          <option value="Spain">Spain</option>
+        </select>
+      </form>
+      <p id="mensajeError"></p>
+     
+      
+      Ojo: bloquear botones si no se validan los campos.<br /> Hecho sólo en "atras" y "adelante" <br />    
+      <br /> 
+      <button id="inserta">Añadir</button>
+      <button id="modifica">Modificar</button>
+      <button id="elimina">Eliminar</button>
+      
+      <br /><br />
+      <button id="atras"><<|</button>
+      <button id="adelante">|>></button>
+      <br /><br />
+      <button id="boton1">Pon datos Cliente 1</button> 
+      <button id="boton2">Pon datos Cliente 2</button>
+      
+    </div>
+ 
+    <script type="module" src="cClientes.js">
+    </script>
+
+  </body>
+  
+</html>
