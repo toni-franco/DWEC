@@ -119,11 +119,10 @@ actualizarTabla() {
             <td>${arrayClientes[i].phone}</td>
             <td>${arrayClientes[i].country}</td>
             <td><button class="eliminarCliente" data-index="${i}">Eliminar</button></td>
+            <td><button class="verCliente" data-index="${i}">Editar</button></td>
         `;
         tablaBody.appendChild(row);
     }
-
-
 
     const botonesEliminar = document.querySelectorAll(".eliminarCliente");
     botonesEliminar.forEach(boton => {
@@ -134,7 +133,22 @@ actualizarTabla() {
         });
     });
 
+    const botonesVer = document.querySelectorAll(".verCliente");
+    botonesVer.forEach(boton => {
+        boton.addEventListener('click', function() {
+            const index = this.getAttribute('data-index');
+            oCtrlClientes.elemVisualizado = index;           
+            document.querySelector('.container').style.display = 'block';
+            document.querySelector('.tabla').style.display = 'none';  
+            oCtrlClientes.show();
+
+        });
+    });
+
+
 }
+
+
 eliminarCliente(index) {
    
 

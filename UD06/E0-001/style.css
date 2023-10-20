@@ -178,6 +178,10 @@ button:not(button#buscarN,button.eliminarCliente) {
     background-color: #d32f2f;
 }
 
+.verCliente:hover {
+    background-color: #d32f2f;
+}
+
 .bloqueado {
     pointer-events: none; 
     background-color: #d32f2f; 
