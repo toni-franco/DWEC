@@ -53,7 +53,7 @@ class DatosClientes {
   }
 
   modificar(nCliente, DatosModificados) {
-    // Este funciona si creamos los objetos con añadir !!!
+    
     this.arrayClientes[nCliente].setTitle(DatosModificados.getTitle());    
     this.arrayClientes[nCliente].setFirstName(DatosModificados.getFirstName());
     this.arrayClientes[nCliente].setLastName(DatosModificados.getLastName());
@@ -61,18 +61,6 @@ class DatosClientes {
     this.arrayClientes[nCliente].setPhone(DatosModificados.getPhone());
     this.arrayClientes[nCliente].setPassword(DatosModificados.getPassword());
     this.arrayClientes[nCliente].setCountry(DatosModificados.getCountry());
-    this.GuardaClientes()
-  }
-
-  modificar1(nCliente, DatosModificados) {
-    // Esto es por cargar objetos del localStorage
-    this.arrayClientes[nCliente].title=DatosModificados.getTitle();
-    this.arrayClientes[nCliente].FirstName =DatosModificados.getFirstName();
-    this.arrayClientes[nCliente].LastName=DatosModificados.getLastName();
-    this.arrayClientes[nCliente].Email=DatosModificados.getEmail();
-    this.arrayClientes[nCliente].Phone=DatosModificados.getPhone();
-    this.arrayClientes[nCliente].Password=DatosModificados.getPassword();
-    this.arrayClientes[nCliente].Country=DatosModificados.getCountry();
     this.GuardaClientes()
   }
 
