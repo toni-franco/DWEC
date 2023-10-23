@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log("Threat 1. Crea");
+        const xhr = new XMLHttpRequest();
+        xhr.open("get", "https://jsonplaceholder.typicode.com/users");
+        xhr.addEventListener("load", function () {
+            console.log("Threat 2. Responde el servidor");
+            let usuarios = JSON.parse(xhr.response);
+            console.log(usuarios);
+        });
+        console.log("Threat 1. envia");
+        xhr.send();
+        console.log("Threat 1. Termina");
+
+    </script>
+
+
+
+</body>
+
+</html>

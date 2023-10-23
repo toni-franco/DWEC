@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var usuarios=null;
+        var posts =null;
+        var comentarios=null;
+
+        const promesaUsuarios = new Promise(function (resolve, reject) {
+            const xhr = new XMLHttpRequest();
+            xhr.open("get", "https://jsonplaceholder.typicode.com/users");
+            xhr.addEventListener("load", function () {
+                if (xhr.status == 200) {
+                    usuarios = JSON.parse(xhr.response);
+                    resolve(usuarios);
+                } else {
+                    reject("No se encontraron usuarios");
+                }
+            });
+            xhr.send();
+        });
+
+        promesaUsuarios
+            .then(Users => {
+                console.log("Usuarios:")
+                console.log(Users); // Usuarios
+
+                return new Promise(function (resolve, reject) {
+                    const xhr_posts = new XMLHttpRequest();
+                    xhr_posts.open("get", "https://jsonplaceholder.typicode.com/posts?userId=" + Users[0].id);
+                    xhr_posts.addEventListener("load", function () {
+                        if (xhr_posts.status == 200) {
+                            posts = JSON.parse(xhr_posts.response);
+                            resolve(posts);
+                        } else {
+                            reject("No se encontraron posteos");
+                        }
+                    });
+                    xhr_posts.send();
+                })
+
+            })
+            .then(Converses => {
+                console.log("Conversaciones:")
+                console.log(Converses);
+
+                return new Promise(function (resolve, reject) {
+                    const xhr_comentarios = new XMLHttpRequest();
+                    xhr_comentarios.open("get", "https://jsonplaceholder.typicode.com/comments?postId=" + Converses[0].id);
+                    xhr_comentarios.addEventListener("load", function () {
+                        if (xhr_comentarios.status == 200) {
+                            comentarios = JSON.parse(xhr_comentarios.response);
+                            console.log("----------------------------")
+                            console.log("comentarios:")
+                            console.log(comentarios)
+                            console.log("Conversaciones:")
+                            console.log(posts)
+                            console.log("Usuarios:")
+                            console.log(usuarios)
+                            console.log("----------------------------")
+                            resolve(comentarios);
+                        } else {
+                            reject("No se encontraron comentarios");
+                        }
+                    });
+                    xhr_comentarios.send();
+                })
+            })
+            .catch(error => {
+                console.error(error);
+            });
+            console.log("Fin threat 1")
+            console.log("Ojo, aqui no podemos usar ni usuarios ni posts ni comentarios")
+
+
+    </script>
+
+
+
+</body>
+
+</html>
