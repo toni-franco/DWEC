@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var usuarios = null;
+        var foros = null;
+        var comentarios = null;
+        console.log("thread 1");
+
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then((response) => response.json())
+            .then((Users) => {
+                console.log("thread 2");
+                usuarios = Users;
+                console.log(usuarios);
+
+                fetch('https://jsonplaceholder.typicode.com/posts?userId=' + usuarios[0].id)
+                    .then((response) => response.json())
+                    .then((Posts) => {
+                        console.log("thread 3");
+                        foros = Posts;
+                        console.log(foros);
+
+                        fetch("https://jsonplaceholder.typicode.com/comments?postId=" + foros[0].id)
+                            .then((response) => response.json())
+                            .then((Posts) => {
+                                comentarios = Posts;
+                                console.log("thread 4");
+                                console.log(comentarios);
+                                console.log("-------------");
+                                console.log(foros);
+                            });
+
+                    });
+
+            });
+         // Thread 1
+         // Aqui las var no tienen datos (por la velocidad de ejecución.
+         console.log("Thread 1");
+         console.log(usuarios);
+         console.log("--------------------------------")   
+
+    </script>
+
+
+
+</body>
+
+</html>

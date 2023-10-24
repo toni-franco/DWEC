@@ -14,29 +14,29 @@
         // Tabla posts - Conversaciones 
         // Tabla coments - Comentarios de los usuarios
         
-        console.log("Threat 1. Crea - Solicita todos los usuarios");
+        console.log("Thread 1. Crea - Solicita todos los usuarios");
         const xhr = new XMLHttpRequest()
         xhr.open("get", "https://jsonplaceholder.typicode.com/users")
         xhr.addEventListener("load", function () {
-            console.log("Threat 2. Responde el servidor");
+            console.log("Thread 2. Responde el servidor");
             let usuarios = JSON.parse(xhr.response)
             console.log(usuarios);
-            console.log("Threat 2. Crea otra petición (ver conversaciones) del usuario[0] (primer usuario)");
+            console.log("Thread 2. Crea otra petición (ver conversaciones) del usuario[0] (primer usuario)");
             var xhr_posts = new XMLHttpRequest()
             xhr_posts.open("get", "https://jsonplaceholder.typicode.com/posts?userId=" + usuarios[0].id)
             xhr_posts.addEventListener("load", function () {
-                console.log("Threat 3. Responde");
+                console.log("Thread 3. Responde");
                 var posts = JSON.parse(xhr_posts.response)
                 console.log(posts);
-                onsole.log("Threat 3. Termina");
+                onsole.log("Thread 3. Termina");
             })
-            console.log("Threat 2. Envia otra petición");
+            console.log("Thread 2. Envia otra petición");
             xhr_posts.send()
-            console.log("Threat 2. Termina");
+            console.log("Thread 2. Termina");
         })
-        console.log("Threat 1. envia");
+        console.log("Thread 1. envia");
         xhr.send();
-        console.log("Threat 1. Termina");
+        console.log("Thread 1. Termina");
 
     </script>
 

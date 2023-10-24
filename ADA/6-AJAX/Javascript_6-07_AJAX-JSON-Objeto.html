@@ -9,14 +9,14 @@
         function inicio() {
             document.getElementById("mostrar").addEventListener("click", mostrar);
         }
-
+        var objeto=null;
         function mostrar() {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     //Al hacer parse nos devuelve un objeto
-                    console.log("Cuando el servidor responde")
-                    var objeto = JSON.parse(this.responseText);
+                    console.log("thread 2. Cuando el servidor responde")
+                    objeto = JSON.parse(this.responseText);
 
                     //Mostramos los datos
                     document.getElementById("parrafo").innerHTML ="Edad de ben"+objeto.Ben + " Edad de joe " + objeto.Joe + " edad Peter " + objeto.Peter + "<br/>";
@@ -26,12 +26,14 @@
                     document.getElementById("parrafo").innerHTML += "El objeto " + objeto + " en modo cadena es " + cadena;
                 }
             }
-            xhr.open("GET", "AJAX_JSON_objeto.php", false);
-            console.log("Crea peticion")
-            xhr.send();
+            xhr.open("GET", "AJAX_JSON_objeto.php", true);
+            console.log("Crea peticion, threat 1")
+            xhr.send(); //genera un thread nuevo
+            console.log(objeto);
              console.log("Fin")
+
         }
-    </script>
+        </script>
 </head>
 <body>
     <button id="mostrar">Mostrar</button>

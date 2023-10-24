@@ -13,41 +13,41 @@
         // Tabla posts - Conversaciones 
         // Tabla coments - Comentarios de los usuarios
         
-        console.log("Threat 1. Crea - Solicita todos los usuarios");
+        console.log("Thread 1. Crea - Solicita todos los usuarios");
         const xhr = new XMLHttpRequest()
         xhr.open("get", "https://jsonplaceholder.typicode.com/users")
         xhr.addEventListener("load", function () {
-            console.log("Threat 2. Responde el servidor");
+            console.log("Thread 2. Responde el servidor");
             let usuarios = JSON.parse(xhr.response)
             console.log(usuarios);
-            console.log("Threat 2. Crea otra petición (ver conversaciones) del usuario[0] (primer usuario)");
+            console.log("Thread 2. Crea otra petición (ver conversaciones) del usuario[0] (primer usuario)");
             var xhr_posts = new XMLHttpRequest()
             xhr_posts.open("get", "https://jsonplaceholder.typicode.com/posts?userId=" + usuarios[0].id)
             xhr_posts.addEventListener("load", function () {
                 var posts = JSON.parse(xhr_posts.response)
-                console.log("Threat 2. Responde");
+                console.log("Thread 2. Responde");
                 console.log(posts);
-                console.log("Threat 3. Crea otra petición (comentarios) de la conversición 0 (primera )");
+                console.log("Thread 3. Crea otra petición (comentarios) de la conversición 0 (primera )");
                 var xhr_comentarios = new XMLHttpRequest();
                 xhr_comentarios.open("GET", "https://jsonplaceholder.typicode.com/comments?postId=" + posts[0].id);
                 xhr_comentarios.addEventListener("load", function () {
-                    console.log("Threat 3 Responde");
+                    console.log("Thread 3 Responde");
                     var comentarios = JSON.parse(xhr_comentarios.response);
                     console.log(comentarios);
-                    console.log("Threat 3. Termina respuesta ");
+                    console.log("Thread 3. Termina respuesta ");
                 })
-                console.log("Threat 3. envia")
+                console.log("Thread 3. envia")
                 xhr_comentarios.send();
-                console.log("Threat 3. Termina")
-                console.log("Threat 2. termina respuesta");
+                console.log("Thread 3. Termina")
+                console.log("Thread 2. termina respuesta");
             })
-            console.log("Threat 2. envia")
+            console.log("Thread 2. envia")
             xhr_posts.send()
-            console.log("Threat 2. Termina")
+            console.log("Thread 2. Termina")
         })
-        console.log("Threat 1. envia")
+        console.log("Thread 1. envia")
         xhr.send();
-        console.log("Threat 1. Termina")
+        console.log("Thread 1. Termina")
 
     </script>
 
