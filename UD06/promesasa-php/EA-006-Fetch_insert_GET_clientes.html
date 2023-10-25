@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+    cliente={"genero":"mr","fname":"toni","lname":"XXXX","email":"a@b.com","phone":"1234","passwd":"123","country":"Es"};
+    //"json=" +
+    const jsonAEnviar = JSON.stringify(cliente);
+
+    var metodo=1; 
+
+    // Probar esta url   
+    // http://localhost:8080/dwc/UD06/promesasa-php/ins-clientes.php?json={%22genero%22:%22mr%22,%22fname%22:%22toni%22,%22lname%22:%22XXXX%22,%22email%22:%22a@b.com%22}
+
+
+    if (metodo) {
+    
+    const promesaUsuarios = new Promise(function (resolve, reject) {
+
+            var xhr = new XMLHttpRequest();
+            url=`ins-clientes.php?json=${jsonAEnviar}`;    
+            xhr.open("GET", url, true);
+            //xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+            xhr.onreadystatechange=function() {
+                if (xhr.readyState==4 && xhr.status==200) {
+                    Rdo=xhr.responseText;
+                    resolve(Rdo);                        
+                } else {reject}
+            }
+            xhr.send();
+        });
+
+    promesaUsuarios.then(
+       result => {
+                    console.log("Con MLHttpRequest: El registro añadido en la BD tiene el id:")
+                    console.log(result)
+                 }
+       , error => console.log(error)
+    )
+    } else {  
+     
+
+        url=`ins-clientes.php?json=${jsonAEnviar}`;
+        
+        
+        (async () =>  {
+            let promesaClientes = await fetch(url, {
+                method: 'GET',            
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                }
+            })            
+            
+            response = await promesaClientes.json()
+            console.log("Con fetch: El registro añadido en la BD tiene el id:")
+            console.log(response);
+               
+        })()
+        
+    }
+
+
+    </script>
+
+
+
+</body>
+
+</html>

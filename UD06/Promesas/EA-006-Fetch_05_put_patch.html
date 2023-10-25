@@ -10,9 +10,10 @@
 <body>
     <script>
 
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
+        fetch('https://jsonplaceholder.typicode.com/posts/1', {
+            method: 'PUT',
             body: JSON.stringify({
+                id: 1,
                 title: 'foo',
                 body: 'bar',
                 userId: 1,
@@ -25,9 +26,6 @@
             console.log(response);
             return response.json();
             //response.json()
-        }).then((json) => {           
-            console.log("Observa la respuesta, que devuelve el id que ha dado la BD");
-            console.log(json)
         });
 
     </script>
