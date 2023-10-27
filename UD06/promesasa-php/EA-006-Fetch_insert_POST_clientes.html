@@ -10,76 +10,59 @@
 <body>
     <script>
 
-    cliente={"genero":"mr","fname":"toni","lname":"XXXX","email":"a@b.com","phone":"1234","passwd":"123","country":"Es"};
-    //"json=" +
-    const jsonAEnviar = JSON.stringify(cliente);
+        cliente = { "genero": "mr", "fname": "toni", "lname": "XXXX", "email": "a@b.com", "phone": "1234", "passwd": "123", "country": "Es" };
+        var jsonAEnviar = JSON.stringify(cliente);
+        var metodo = 0;
+        var url = "ins-clientes-post.php";
+        if (metodo) {
+            const promesaUsuarios = new Promise(function (resolve, reject) {
+                var xhr = new XMLHttpRequest();
+                url = `ins-clientes-post.php`;
+                xhr.open("POST", url, true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                // no va !!   xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        Rdo = xhr.responseText;
+                        resolve(Rdo);
+                    } else { reject }
+                }
+                xhr.send("datos=" + jsonAEnviar);
+            });
 
-    var metodo=0; 
-
-    
-    if (metodo) {
-    
-    const promesaUsuarios = new Promise(function (resolve, reject) {
-
-            var xhr = new XMLHttpRequest();
-            url=`ins-clientes.php`;    
-            xhr.open("POST", url, true);
-            //xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-            xhr.onreadystatechange=function() {
-                if (xhr.readyState==4 && xhr.status==200) {
-                    Rdo=xhr.responseText;
-                    resolve(Rdo);                        
-                } else {reject}
-            }
-            xhr.send(jsonAEnviar );
-        });
-
-    promesaUsuarios.then(
-       result => {
+            promesaUsuarios.then(
+                result => {
                     console.log("POST: XMLHttpRequest: El registro añadido en la BD tiene el id:")
                     console.log(result)
-                 }
-       , error => console.log(error)
-    )
-    } else {  
-     
+                }
+                , error => console.log(error)
+            )
+        } else {
+            var rdo = null;
+            console.log("thread a1");
+            (async () => {
+                console.log("thread b1");
+                let promesaClientes = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        "Content-type": "application/x-www-form-urlencoded",
+                    },
+                    body: "datos=" + jsonAEnviar
+                })
+                response = await promesaClientes.json();
+                console.log("thread b3");
+                console.log("POST: fetch: El registro añadido en la BD tiene el id:")
+                console.log(response);
 
-        url=`ins-clientes.php`;
-        var rdo =null;
-        console.log("thread a1");
-        (async () =>  {
-            console.log("thread b1");
-            let promesaClientes = await fetch(url, {
-                method: 'POST',            
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-                body: jsonAEnviar
-            })            
+                console.log("thread b2");
 
-            console.log("thread b2");
-            response = await promesaClientes.json();
-            console.log("thread b3");
-            console.log("POST: fetch: El registro añadido en la BD tiene el id:")
-            console.log(response);            
-            
-            // Aquí se hacen otras promesas a otras tablas !!!
-
-
-        })()
-        console.log("thread a2");
-        // Aquí rdo no tiene valor !!!
-    }
-
-
-       
-     
+ 
+            })()
+            console.log("thread a2");
+            // Aquí rdo no tiene valor !!!
+        }
 
     </script>
-
-
-
 </body>
 
 </html>
