@@ -33,15 +33,16 @@
                 console.log("Usuarios:")
                 console.log(Users); // Usuarios
 
-                return new Promise(function (resolve, reject) {
+                return new Promise(function (postresolveok, postrejectnook) {
+
                     const xhr_posts = new XMLHttpRequest();
                     xhr_posts.open("get", "https://jsonplaceholder.typicode.com/posts?userId=" + Users[0].id);
                     xhr_posts.addEventListener("load", function () {
                         if (xhr_posts.status == 200) {
                             posts = JSON.parse(xhr_posts.response);
-                            resolve(posts);
+                            postresolveok(posts);
                         } else {
-                            reject("No se encontraron posteos");
+                            postrejectnook("No se encontraron posteos");
                         }
                     });
                     xhr_posts.send();
@@ -54,7 +55,9 @@
 
                 return new Promise(function (resolve, reject) {
                     const xhr_comentarios = new XMLHttpRequest();
+                   
                     xhr_comentarios.open("get", "https://jsonplaceholder.typicode.com/comments?postId=" + Converses[0].id);
+                   
                     xhr_comentarios.addEventListener("load", function () {
                         if (xhr_comentarios.status == 200) {
                             comentarios = JSON.parse(xhr_comentarios.response);
