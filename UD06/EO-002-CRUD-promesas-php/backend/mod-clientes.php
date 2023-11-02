@@ -24,7 +24,7 @@ $sql = "UPDATE clientes SET genero ='" . $cliente['genero'] .
   "', passwd ='" . $cliente['passwd'] .
   "', id_pais ='" . $cliente['id_pais'] . "' WHERE id ='" . $cliente['id']."'";
 
-//echo $sql;
+echo $sql;
 
 
 if ($conn->query($sql) === TRUE) {

@@ -11,11 +11,12 @@ $bbdd = "ada";
 //Crear la conexión
 $conexion = new mysqli($servidor, $usuario, $password, $bbdd);
 
+
 if ($conexion ->connect_error){
     die("Error en la conexion: "+$conexion->connect_error);
 }else{
     
-    $sql = "SELECT id, genero, fname, lname,email,phone,passwd,id_pais FROM clientes"; //" WHERE puntuacion >= $valor";
+    $sql = "SELECT id, genero, fname, lname,email,phone,passwd,country FROM clientes";
     
     $resultado = $conexion->query($sql);
 
@@ -28,5 +29,6 @@ if ($conexion ->connect_error){
      
     echo json_encode($salida);
 }
+
 $conexion->close();
 ?>

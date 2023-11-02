@@ -2728,7 +2728,7 @@ $api = new PHP_CRUD_API(array(
  	'hostname'=>'localhost',
  	'username'=>'root',
  	'password'=>'',
- 	'database'=>'Movies',
+ 	'database'=>'ada',
  	'charset'=>'utf8mb4'
  ));
  $api->executeCommand();
