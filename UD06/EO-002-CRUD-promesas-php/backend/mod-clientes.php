@@ -22,7 +22,7 @@ $sql = "UPDATE clientes SET genero ='" . $cliente['genero'] .
   "', email ='" . $cliente['email'] .
   "', phone ='" . $cliente['phone'] .
   "', passwd ='" . $cliente['passwd'] .
-  "', id_pais ='" . $cliente['id_pais'] . "' WHERE id ='" . $cliente['id']."'";
+  "', country ='" . $cliente['id_pais'] . "' WHERE id ='" . $cliente['id']."'";
 
 echo $sql;
 

@@ -45,10 +45,12 @@ class DatosClientes {
 
     var xhr = new XMLHttpRequest();
     
-    xhr.open("POST", "./backend/mod-clientes.php", false);
+    let url = "./api/api.php/clientes/"+cliente.id; 
+///    xhr.open("POST", "./backend/mod-clientes.php", false);
+    xhr.open("PUT", url, false);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    xhr.send("json=" + jsonAEnviar);
+    xhr.send( jsonAEnviar);
     var phptext = xhr.responseText;
     //console.log(phptext);
     if (phptext == "Error") {
@@ -66,12 +68,13 @@ class DatosClientes {
     console.log("insert -->",jsonAEnviar);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "./backend/ins-clientes.php", false);
+     let url = "./api/api.php/clientes/";
+//    xhr.open("POST", "./backend/ins-clientes.php", false);
+    xhr.open("POST", url, false);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    xhr.send("json=" + jsonAEnviar);
+    xhr.send(jsonAEnviar);
     var phptext = xhr.responseText;
-    console.log(phptext);
+//    console.log(phptext);
     if (phptext == "Error") {
       //console.log("Algo no ha funcionado en la BBDD")
     } else {
@@ -87,16 +90,20 @@ class DatosClientes {
 
   eliminar(idcliente) {
 
-  //  console.log("eliminar el ",idcliente);   
+    //  console.log("eliminar el ",idcliente);   
     var cliente = this.arrayClientes [idcliente];
-    const jsonAEnviar = JSON.stringify(cliente);
-    console.log("Eliminar",cliente);
+    //const jsonAEnviar = JSON.stringify(cliente);
+    //console.log("Eliminar",cliente);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "./backend//del-clientes.php", false);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    let url = "./api/api.php/clientes/"+cliente.id; 
 
-    xhr.send("json=" + jsonAEnviar);
+//     xhr.open("POST", "./backend//del-clientes.php", false); // ABANS PROGRAMAVEM
+
+    xhr.open("DELETE", url, false);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+    //xhr.send("json=" + jsonAEnviar);
     var phptext = xhr.responseText;
     //console.log(phptext);
     if (phptext == "Error") {
@@ -123,13 +130,19 @@ class DatosClientes {
 
    const promesaUsuarios = new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
-    let url = `./backend/get-clientes.php`;
-    xhr.open("POST", url, true);
+
+ //   let url = `./backend/get-clientes.php`;  // ABANS PROGRAMAVEM !!1
+    let url = `./api/api.php/clientes`;
+    xhr.open("GET", url, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
+//        console.log(this.responseText);
         var clientes = JSON.parse(this.responseText);
-        resolve(clientes);
+//        console.log("registros", clientes.clientes.records.length);
+        var aclientes=clientes.clientes.records;
+
+        resolve(aclientes);
       } else {
         reject;
       }
