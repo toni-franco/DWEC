@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 1.1rem;
+    border: 2px solid black;
+    border-radius: 30px;
+    width: 90%;
+    height: 60%;
+    padding: 20px;
+}
+
+.container p {
+    text-align: center;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    height: 45px;
+    font-size: 1.2rem;  
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    height: 45px;
+    font-size: 1.2rem;  
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.container label {
+    width: 85%;
+    text-align: start;
+}
+
+button {
+   
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fbce0f;
+    font-size: 1.25rem;
+    transition: box-shadow 0.2s ease-in-out;
+}
+

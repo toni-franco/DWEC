@@ -1,0 +1,3 @@
+#///http://localhost:8080/dwc/LOGIN/backend/proxy.php?username="toni"&password="123"
+#// http://localhost:8080/dwc/LOGIN/backend/api/api.php/users
+#// http://localhost:8080/dwc/LOGIN/backend/proxy.php?username=toni&password=123

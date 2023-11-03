@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <p> Login </p>
+      <form method="GET" action="../backend/proxy.php">
+        
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" name="username" value="user1"><br>
+
+        <label for="clave">Clave</label>
+        <input type="password" id="clave" name="password" value="password1"><br><br>
+        <p id="mensajeError" style="color: red; font-size: 1.2rem;"></p>
+       
+        <div style="display: flex;justify-content: center;">
+            <button id="signin" type="submit" value="Submit">Enviart</button>
+        </div>
+      </form>
+
+    </div>
+
+</body>
+<!-- <script type="module" src="cLogin.js"> </script> -->
+
+</html>
