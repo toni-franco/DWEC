@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="buscar">
+            <input type="text" id="buscarNombre" placeholder="Buscar por nombe">
+            <button id="buscarN">BUSCAR</button>
+        </div>
+
+        <form>
+            <label for="id_bd">BD_id</label>
+            <input type="text" id="id_BD"/>
+            
+            <label for="id_cliente">id</label>
+            <input type="text" id="id_cliente"/>
+
+            <label for="genero">Genero</label>
+            <input type="text" id="genero" value="vacio">
+
+            <label for="firstname">First name</label>
+            <input type="text" id="firstname" pattern="[A-Za-z ]{2,30}"
+            title="Introduce entre 2 y 30 letras sin acentos" required />
+
+            <label for="lastname">Last name</label>
+            <input type="text" id="lastname" maxlength="30" />
+
+          
+            <label for="email">Email</label>
+            <input type="text" id="email" pattern="/\S+@\S+\.\S+/" />
+
+            
+            <label for="phone">Phone number</label>
+            <input type="text" id="phone" pattern="[0-9]{9}" title=" Numero de 9 cifras" />
+
+           
+            <label for="password">Password</label>
+            <input type="password" id="password" />
+
+            <label for="country">Country</label>
+            <input type="text" id="country" />
+            
+            <!--
+            <div class="select">
+                <label for="country">Country</label>
+                <select name="country" id="country">
+                    <option value="-" selected hidden>Country</option>
+                    <option value="China">China</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Spain">Spain</option>
+                </select>
+            </div>
+            -->
+
+        </form>
+        <p id="mensajeError" style="color: red; font-size: 1.2rem;"></p>
+
+        <div class="buttons">
+            <button id="inserta">Añadir</button>
+            <button id="modifica">Modificar</button>
+            <button id="elimina">Eliminar</button>
+            <button id="atras">Atras</button>
+            <button id="showTable">Mostrar Tabla</button>
+            <button id="adelante">Delante</button>
+        </div>
+
+
+    </div>
+
+    <div class="tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody id="tablaClientesBody">
+
+            </tbody>
+        </table>
+        <button id="vistaVerticalButton">Vista Vertical</button>
+    </div>
+
+    <script type="module" src="cClientes.js">
+
+        /*(funtion (){
+
+
+        })()
+        */
+    </script>
+</body>
+
+</html>
