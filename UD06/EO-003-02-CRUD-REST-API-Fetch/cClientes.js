@@ -55,7 +55,9 @@ class ctrl_clientes {
            
             document.querySelector('.container').style.display = 'none';
             document.querySelector('.tabla').style.display = 'block'; 
-            oCtrlClientes.init();          
+            //oCtrlClientes.init();                      
+            this.VistaArrayClientes=mDatosClientes.getAllClient();                            
+            this.elem = this.VistaArrayClientes[0]; 
             this.actualizarVistaTabla();
         });
 
@@ -137,10 +139,8 @@ actualizarVistaTabla() {
     botonesEliminar.forEach(boton => {
         boton.addEventListener('click', function() {
             const index = this.getAttribute('data-index');           
-            mDatosClientes.eliminar(index);
-            console.log("eliminia:",index)
-            oCtrlClientes.VistaArrayClientes.splice(index, 1);
-            //oCtrlClientes.VistaArrayClientes = mDatosClientes.getAllClient();
+            mDatosClientes.eliminar(index);           
+            oCtrlClientes.VistaArrayClientes.splice(index, 1);            
             oCtrlClientes.actualizarVistaTabla(); 
             oCtrlClientes.show();          
 
