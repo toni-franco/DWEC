@@ -5,7 +5,8 @@ class DatosClientes{
 
   arrayClientes=[];
 
-  constructor() {   
+  constructor() {
+    this.arrayClientes=[];
     this.CargarClientes();
   }
 
@@ -54,9 +55,10 @@ class DatosClientes{
       this.arrayClientes[nCliente].passwd = DatosModificados.passwd;
       this.arrayClientes[nCliente].country= DatosModificados.country;
 
-     
+      
       const jsonAEnviar = JSON.stringify( DatosModificados);
-      let url = "./api/api.php/clientes/"+DatosModificados.id+"&order=update";      
+      let url = "./api/api.php/clientes/"+DatosModificados.id+"&order=update"; 
+      
 
       const response = await fetch(url, {
         method: "PUT",
@@ -103,6 +105,9 @@ class DatosClientes{
 
 
   async CargarClientes() {
+
+    console.log("Modelo 1. Solicita datos",new Date().toISOString());
+    console.log("------------------------------------");
     this.arrayClientes=[] ;    
     let url ="./api/api.php/clientes";
     let promesaClientes = await fetch(url, {
@@ -114,8 +119,9 @@ class DatosClientes{
     let response = await promesaClientes.json();
     var datos = await response;   
     //console.log(datos);
-    clientes=datos.clientes.records; 
-
+    var clientes=datos.clientes.records; 
+    console.log("Modelo 2. Ya tenemos los datos",new Date().toISOString());
+    console.log("------------------------------------");
     for (var i = 0; i < clientes.length; i++) {
       var ncliente = new Cliente(
                                 clientes[i][0],

@@ -1,18 +1,14 @@
 import { Cliente } from './pojoClientes.js';
 import { DatosClientes } from './mClientes.js';
 
-var arrayClientes = [];
-
 const primerNombre = document.getElementById("firstname");
 const telefono = document.getElementById("phone");
 const emailInput = document.getElementById("email");
 const passInput = document.getElementById("password");
 
-
-
-var mDatosClientes = new DatosClientes(arrayClientes);
-
 class ctrl_clientes {
+
+    VistaArrayClientes = [];
 
     elemVisualizado = 0;
     elem =null;
@@ -44,7 +40,7 @@ class ctrl_clientes {
 
             oCtrlClientes.elem = oCtrlClientes.getValues();
             mDatosClientes.insertar(oCtrlClientes.elem);
-            oCtrlClientes.elemVisualizado = arrayClientes.length - 1;
+            oCtrlClientes.elemVisualizado = this.VistaArrayClientes.length - 1;
             event.preventDefault();
         });
 
@@ -81,7 +77,7 @@ class ctrl_clientes {
       
           document.getElementById("adelante").addEventListener("click", function (event) {
            // if (oCtrlClientes.validaApellido()) {
-              if (oCtrlClientes.elemVisualizado < arrayClientes.length - 1) {         
+              if (oCtrlClientes.elemVisualizado < this.VistaArrayClientes.length - 1) {         
                 oCtrlClientes.elemVisualizado += 1;
                 oCtrlClientes.show();
                 event.preventDefault();          
@@ -94,9 +90,9 @@ class ctrl_clientes {
             var nombre = document.getElementById("buscarNombre").value;
             var enc = false;
 
-            for (var i = 0; i < arrayClientes.length; i++) {
-                if (arrayClientes[i].firstname == nombre) {
-                    oCtrlClientes.setValues(arrayClientes[i]);
+            for (var i = 0; i < this.VistaArrayClientes.length; i++) {
+                if (this.VistaArrayClientes[i].firstname == nombre) {
+                    oCtrlClientes.setValues(this.VistaArrayClientes[i]);
                     enc = true;
                     oCtrlClientes.elemVisualizado = i;
                     oCtrlClientes.show();
@@ -119,17 +115,17 @@ actualizarTabla() {
     const tablaBody = document.getElementById("tablaClientesBody");
     tablaBody.innerHTML = ''; 
 
-    for (var i = 0; i < arrayClientes.length; i++) {
+    for (var i = 0; i < this.VistaArrayClientes.length; i++) {
 
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${arrayClientes[i].fname}</td>
-            <td>${arrayClientes[i].lname}</td>
-            <td>${arrayClientes[i].email}</td>
-            <td>${arrayClientes[i].phone}</td>
-            <td>${arrayClientes[i].country}</td>
-            <td><button class="eliminarCliente" data-index="${i}" bd-index="${arrayClientes[i].id}">Eliminar</button></td>
-            <td><button class="verCliente" data-index="${i}" bd-index="${arrayClientes[i].id}">Editar</button></td>
+            <td>${this.VistaArrayClientes[i].fname}</td>
+            <td>${this.VistaArrayClientes[i].lname}</td>
+            <td>${this.VistaArrayClientes[i].email}</td>
+            <td>${this.VistaArrayClientes[i].phone}</td>
+            <td>${this.VistaArrayClientes[i].country}</td>
+            <td><button class="eliminarCliente" data-index="${i}" bd-index="${this.VistaArrayClientes[i].id}">Eliminar</button></td>
+            <td><button class="verCliente" data-index="${i}" bd-index="${this.VistaArrayClientes[i].id}">Editar</button></td>
         `;
         tablaBody.appendChild(row);
     }
@@ -165,8 +161,8 @@ actualizarTabla() {
 
 eliminarCliente(index) {
    
-    if (arrayClientes) {
-        arrayClientes.splice(index, 1);
+    if (this.VistaArrayClientes) {
+        this.VistaArrayClientes.splice(index, 1);
         mDatosClientes.GuardaClientes();
         oCtrlClientes.actualizarTabla();
         oCtrlClientes.show();
@@ -258,8 +254,8 @@ eliminarCliente(index) {
 
 
     show() {
-        if (arrayClientes.length>0){
-            var cliente = arrayClientes[oCtrlClientes.elemVisualizado];
+        if (this.VistaArrayClientes.length>0){
+            var cliente = this.VistaArrayClientes[oCtrlClientes.elemVisualizado];
             oCtrlClientes.setValues(cliente);
             document.getElementById("id_cliente").value = oCtrlClientes.elemVisualizado;
             this.elem = cliente;            
@@ -268,11 +264,11 @@ eliminarCliente(index) {
 
     init(){
  
-                arrayClientes=mDatosClientes.getAllClient();                
-                console.log("init ",new Date().toISOString(),arrayClientes);
-                this.elem = arrayClientes[0];               
+                this.VistaArrayClientes=mDatosClientes.getAllClient();                
+                console.log("INIT 1 ",new Date().toISOString(),this.VistaArrayClientes);
+                this.elem = this.VistaArrayClientes[0];               
                 console.log("-----------------------------------------------------");
-                console.log("Observa que pasa por aquí "+new Date().toISOString()+" y no tiene datos ", this.elem);
+                console.log("INIT 2. Observa que pasa por aquí "+new Date().toISOString()+" y no tiene datos ", this.elem);
                 console.log("-----------------------------------------------------");
                 if (true) {
 
@@ -280,7 +276,7 @@ eliminarCliente(index) {
                     var  timer1 = setInterval(() => {
                         console.log("-");
                         this.show();
-                        console.log("Refresh "+new Date().toISOString(),this.elem );
+                        console.log("INIT 3. Refresh "+new Date().toISOString(),this.elem );
                     },2*1000)
                     
                     // Para de recargar pasados 5 segundos
@@ -372,8 +368,26 @@ function isValidEmail(email) {
     return regex.test(email);
 }
 
+console.log("Javascript, es un lenguaje mono-hilo, esto quiere decir que la interpretación \n \
+de nuestro código se atiende por un único hilo de ejecución. El navegador \n \
+Crea los hilos para gestionar eventos y otros aspectos.\n \
+Por lo mismo se programa de manera no bloqueante y \n \
+frecuentemente utilizamos llamadas asíncronas.");
+
+console.log("MAIN. Paso  1",new Date().toISOString());
+
+console.log("MAIN. Asincronia. En el constructor a cargan los datos asincronamente ",new Date().toISOString());
+var mDatosClientes = new DatosClientes();
+
+console.log("MAIN. Paso 2",new Date().toISOString());
+console.log("MAIN. Creamos el controlador y define los eventos (otro thread)",new Date().toISOString());
+
 var oCtrlClientes = new ctrl_clientes();
+
+console.log("MAIN. Paso 3. Ejecutar INIT",new Date().toISOString());
 oCtrlClientes.init();
 
+console.log("MAIN. Paso 4. FIN",new Date().toISOString());
+console.log("------------------------------------");
 
 
