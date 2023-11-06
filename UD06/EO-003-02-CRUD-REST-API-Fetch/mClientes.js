@@ -28,11 +28,11 @@ class DatosClientes{
           body: ""+jsonAEnviar
       });     
       if (response.ok) {
-          console.log(response);
+          //console.log(response);
           var texto=await response.text();
           //console.log(texto);
           cliente.id = texto;   
-          console.log("id en bd:",texto)   
+          console.log("Insert en BD. id en bd:",texto)   
           this.arrayClientes.push(cliente);
       } else {
           console.log("Algo no ha funcionado en la BBDD");

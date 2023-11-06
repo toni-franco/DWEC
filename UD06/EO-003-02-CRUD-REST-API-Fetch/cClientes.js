@@ -40,7 +40,7 @@ class ctrl_clientes {
 
             oCtrlClientes.elem = oCtrlClientes.getValues();
             mDatosClientes.insertar(oCtrlClientes.elem);
-            oCtrlClientes.elemVisualizado = this.VistaArrayClientes.length - 1;
+            oCtrlClientes.elemVisualizado = oCtrlClientes.VistaArrayClientes.length - 1;
             event.preventDefault();
         });
 
@@ -55,7 +55,7 @@ class ctrl_clientes {
            
             document.querySelector('.container').style.display = 'none';
             document.querySelector('.tabla').style.display = 'block';
-            this.actualizarTabla();
+            this.actualizarVistaTabla();
         });
 
         document.getElementById("vistaVerticalButton").addEventListener('click', () => {
@@ -111,7 +111,7 @@ class ctrl_clientes {
 
 
     
-actualizarTabla() {
+actualizarVistaTabla() {
     const tablaBody = document.getElementById("tablaClientesBody");
     tablaBody.innerHTML = ''; 
 
@@ -134,12 +134,12 @@ actualizarTabla() {
     botonesEliminar.forEach(boton => {
         boton.addEventListener('click', function() {
             const index = this.getAttribute('data-index');
-            //oCtrlClientes.eliminarCliente(index);
-
             mDatosClientes.eliminar(index);
-            //oCtrlClientes.elemVisualizado = index-1;
-            //oCtrlClientes.show()
-            oCtrlClientes.actualizarTabla();
+            oCtrlClientes.VistaArrayClientes.splice(index, 1);
+            oCtrlClientes.elemVisualizado = 0;
+            oCtrlClientes.actualizarVistaTabla(); 
+            oCtrlClientes.show();          
+
         });
     });
 
@@ -164,7 +164,7 @@ eliminarCliente(index) {
     if (this.VistaArrayClientes) {
         this.VistaArrayClientes.splice(index, 1);
         mDatosClientes.GuardaClientes();
-        oCtrlClientes.actualizarTabla();
+        oCtrlClientes.actualizarVistaTabla();
         oCtrlClientes.show();
     }
 }
@@ -272,18 +272,21 @@ eliminarCliente(index) {
                 console.log("-----------------------------------------------------");
                 if (true) {
 
-                    // Carga la página cada 2 segundos !!
-                    var  timer1 = setInterval(() => {
-                        console.log("-");
-                        this.show();
-                        console.log("INIT 3. Refresh "+new Date().toISOString(),this.elem );
-                    },2*1000)
-                    
-                    // Para de recargar pasados 5 segundos
-                    setTimeout(() => clearInterval(timer1), 5*1000)  
+                   this.refresh();
                 
                 } else this.show();
 
+    }
+
+    refresh(){
+        var  timer1 = setInterval(() => {
+            console.log("-");
+            this.show();
+            console.log("INIT 3. Refresh "+new Date().toISOString(),this.elem );
+        },1*1000)
+        
+        // Para de recargar pasados 2 segundos
+        setTimeout(() => clearInterval(timer1), 2*1000)  
     }
 }
 
