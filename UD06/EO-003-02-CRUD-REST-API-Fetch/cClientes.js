@@ -77,7 +77,7 @@ class ctrl_clientes {
       
           document.getElementById("adelante").addEventListener("click", function (event) {
            // if (oCtrlClientes.validaApellido()) {
-              if (oCtrlClientes.elemVisualizado < this.VistaArrayClientes.length - 1) {         
+              if (oCtrlClientes.elemVisualizado < oCtrlClientes.VistaArrayClientes.length - 1) {         
                 oCtrlClientes.elemVisualizado += 1;
                 oCtrlClientes.show();
                 event.preventDefault();          
@@ -90,9 +90,9 @@ class ctrl_clientes {
             var nombre = document.getElementById("buscarNombre").value;
             var enc = false;
 
-            for (var i = 0; i < this.VistaArrayClientes.length; i++) {
+            for (var i = 0; i < oCtrlClientes.VistaArrayClientes.length; i++) {
                 if (this.VistaArrayClientes[i].firstname == nombre) {
-                    oCtrlClientes.setValues(this.VistaArrayClientes[i]);
+                    oCtrlClientes.setValues(oCtrlClientes.VistaArrayClientes[i]);
                     enc = true;
                     oCtrlClientes.elemVisualizado = i;
                     oCtrlClientes.show();
