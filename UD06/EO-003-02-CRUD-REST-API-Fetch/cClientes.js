@@ -54,13 +54,16 @@ class ctrl_clientes {
         document.getElementById("showTable").addEventListener('click', () => {
            
             document.querySelector('.container').style.display = 'none';
-            document.querySelector('.tabla').style.display = 'block';
+            document.querySelector('.tabla').style.display = 'block'; 
+            oCtrlClientes.init();          
             this.actualizarVistaTabla();
         });
 
         document.getElementById("vistaVerticalButton").addEventListener('click', () => {
             document.querySelector('.container').style.display = 'block';
             document.querySelector('.tabla').style.display = 'none';
+            oCtrlClientes.elemVisualizado = 0;
+            oCtrlClientes.show();
         });
 
 
@@ -133,10 +136,11 @@ actualizarVistaTabla() {
     const botonesEliminar = document.querySelectorAll(".eliminarCliente");
     botonesEliminar.forEach(boton => {
         boton.addEventListener('click', function() {
-            const index = this.getAttribute('data-index');
+            const index = this.getAttribute('data-index');           
             mDatosClientes.eliminar(index);
+            console.log("eliminia:",index)
             oCtrlClientes.VistaArrayClientes.splice(index, 1);
-            oCtrlClientes.elemVisualizado = 0;
+            //oCtrlClientes.VistaArrayClientes = mDatosClientes.getAllClient();
             oCtrlClientes.actualizarVistaTabla(); 
             oCtrlClientes.show();          
 
@@ -255,7 +259,7 @@ eliminarCliente(index) {
 
     show() {
         if (this.VistaArrayClientes.length>0){
-            var cliente = this.VistaArrayClientes[oCtrlClientes.elemVisualizado];
+            var cliente =  oCtrlClientes.VistaArrayClientes[oCtrlClientes.elemVisualizado];
             oCtrlClientes.setValues(cliente);
             document.getElementById("id_cliente").value = oCtrlClientes.elemVisualizado;
             this.elem = cliente;            
@@ -272,22 +276,20 @@ eliminarCliente(index) {
                 console.log("-----------------------------------------------------");
                 if (true) {
 
-                   this.refresh();
+                    var  timer1 = setInterval(() => {
+                        console.log("-");
+                        this.show();
+                        console.log("INIT 3. Refresh "+new Date().toISOString(),this.elem );
+                    },1*1000)
+                    
+                    // Para de recargar pasados 2 segundos
+                    setTimeout(() => clearInterval(timer1), 2*1000)  
                 
                 } else this.show();
 
     }
 
-    refresh(){
-        var  timer1 = setInterval(() => {
-            console.log("-");
-            this.show();
-            console.log("INIT 3. Refresh "+new Date().toISOString(),this.elem );
-        },1*1000)
-        
-        // Para de recargar pasados 2 segundos
-        setTimeout(() => clearInterval(timer1), 2*1000)  
-    }
+   
 }
 
 
