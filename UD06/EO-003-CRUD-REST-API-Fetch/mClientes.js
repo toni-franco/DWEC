@@ -5,8 +5,7 @@ class DatosClientes{
 
   arrayClientes=[];
 
-  constructor() {
-    this.arrayClientes=[];
+  constructor() {   
     this.CargarClientes();
   }
 
@@ -55,10 +54,9 @@ class DatosClientes{
       this.arrayClientes[nCliente].passwd = DatosModificados.passwd;
       this.arrayClientes[nCliente].country= DatosModificados.country;
 
-      //var cliente = this.arrayClientes[nCliente];
+     
       const jsonAEnviar = JSON.stringify( DatosModificados);
-      let url = "./api/api.php/clientes/"+DatosModificados.id+"&order=update"; 
-      //let url = `./api/api.php/cliente?id=${cliente.id}&nombre=${nombre}&apellido=${apellido}&email=${email}&telefono=${telefono}&order=update`
+      let url = "./api/api.php/clientes/"+DatosModificados.id+"&order=update";      
 
       const response = await fetch(url, {
         method: "PUT",
