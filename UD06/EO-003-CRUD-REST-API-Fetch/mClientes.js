@@ -112,9 +112,9 @@ class DatosClientes{
       }
     });
     let response = await promesaClientes.json();
-    var clientes = await response;   
-    //console.log(clientes);
-    clientes=clientes.clientes.records; 
+    var datos = await response;   
+    //console.log(datos);
+    clientes=datos.clientes.records; 
 
     for (var i = 0; i < clientes.length; i++) {
       var ncliente = new Cliente(
