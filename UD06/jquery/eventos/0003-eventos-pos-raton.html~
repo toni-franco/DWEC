@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Trabajando con el objeto evento</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+	$("#mielemento").click(function(e){
+		$("#mielemento").html("X: " + e.pageX + " - Y: " + e.pageY)
+	});
+	$(document).mousemove(function(e){
+		$("#p2").html("X: " + e.pageX + " - Y: " + e.pageY)
+	});
+
+  	var x = $("#mielemento" ).position();
+        $( "#p1" ).text( "left: " + x.left + ", top: " +  x.top );
+
+  });
+
+</script>
+
+</head>
+<body>
+    <h1>Trabajando con el objeto evento</h1>
+	<div id="mielemento">Hazme clic, que te mostraré las coordenadas del clic</div>
+    <p> Posición del div</p>
+    <p id="p1"> ejje</p>
+    <p id="p2"> ejje</p>
+</body>
+</html>

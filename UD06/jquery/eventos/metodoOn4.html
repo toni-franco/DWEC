@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ejemplo método .on()</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<script src="http://code.jquery.com/jquery-3.1.0.min.js" 
+			type="text/javascript"></script>
+    <script>
+	  $(function(){
+	    $('#contenedor').on("click", ".enlace", function(event){
+		  console.log("Tengo un manejador");
+		  $('#contenedor').append("<p><a class='enlace'> No voy a ningún sitio </a></p>")
+	    });
+	    
+	  });
+    </script>
+  </head>
+<body>
+	<div id="contenedor">
+		<p><a class="enlace">No voy a ningún sitio</a></p>
+	</div>
+</body>
+</html>

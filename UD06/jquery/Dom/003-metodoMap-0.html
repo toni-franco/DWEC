@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Método .map()</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <script src="http://code.jquery.com/jquery-3.1.0.min.js" 
+			type="text/javascript"></script>
+    <script type="text/javascript">
+     // Map Por cada elemento seleccionado se llama a la función 
+     $(function() 
+     {
+        var Texto1 = $( ":checkbox" ).map( function(){return this.id;} )
+	                .get()[0];
+                  // Texto contiene una referencia al elemento 
+
+        alert(Texto1);   // Resultado: "two,four,six,eight".
+
+        var Texto = $( ":checkbox" ).map( function(){return this.id;} )
+	                .get().join();  // join() returns an array as a string (js no de jquery)
+   		           
+       alert(Texto);   // Resultado: "two,four,six,eight".
+    }); 
+    </script>
+  </head>
+<body>
+  <p><b>Values: </b></p>
+
+  <form method="post" action="">
+  <fieldset>
+    <div>
+      <label for="two">2</label>
+      <input type="checkbox" value="2" id="two" name="number[]">
+    </div>
+    <div>
+      <label for="four">4</label>
+      <input type="checkbox" value="4" id="four" name="number[]">
+    </div>
+    <div>
+      <label for="six">6</label>
+      <input type="checkbox" value="6" id="six" name="number[]">
+    </div>
+    <div>
+      <label for="eight">8</label>
+      <input type="checkbox" value="8" id="eight" name="number[]">
+    </div>
+  </fieldset>
+
+  </form>
+</body>
+</html>

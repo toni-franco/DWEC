@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Trabajando con el objeto evento y mousemove</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$(document).mousemove(function(e){
+		$("h1").html("X: " + e.pageX + " - Y: " + e.pageY)
+	});
+})
+</script>
+
+</head>
+<body>
+    <h1>Trabajando con el objeto evento y mousemove</h1>
+	Haz clic en cualquier parte de la página...
+
+</body>
+</html>

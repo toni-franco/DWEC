@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>map demo</title>
+  <style>
+  body {
+    font-size: 16px;
+  }
+  ul {
+    float: left;
+    margin: 0 30px;
+    color: blue;
+  }
+  #results {
+    color: red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<ul>
+  <li>First</li>
+  <li>Second</li>
+  <li>Third</li>
+  <li>Fourth</li>
+  <li>Fifth</li>
+</ul>
+<ul id="results">
+</ul>
+<script>
+
+var mappedItems = $( "li" ).map(   // Esta función se llama por cada uno de los elementos seleccionados
+  function( index ) {
+    var mitexto=$( this ).text();  // Obtiene el contenido del li
+	  var replace_texto = $( "<li>" ).text(mitexto); // crea una cadena de texto <li> que tiene mitexto 
+    var replacement=replace_texto.get( 0 );     // get devuelve referencia al elemento          
+
+    // Esto estava inicialmente así:
+    //var replacement= $( "<li>" ).text($( this ).text()).get( 0 );
+
+	  if ( index === 0 ) {
+	 
+	    // Make the first item all caps
+
+	    $( replacement ).text( $( replacement ).text().toUpperCase() );
+	  } else if ( index === 1 || index === 3 ) {
+	 
+	    // Delete the second and fourth items
+	    replacement = null;
+
+	  } else if ( index === 2 ) {
+      
+
+      // Crear un li vacio:
+      liVacio= $( "<li>" ).get( 0 );
+	    // Make two of the third item and add some text
+      // replacement Contiene : <li> Third</li>
+      // Crea un array 
+      replacement = [ replacement, liVacio ];
+	    $( replacement[ 0 ] ).append( "<b> - A</b>" );
+	    $( replacement[ 1 ] ).append( "Extra <b> - B</b>" );
+	  }
+	 
+	  // Replacement will be a dom element, null, or an array of dom elements
+	  return replacement;
+ });
+ console.log (mappedItems);
+$( "#results" ).append( mappedItems );  // Añade la lista  
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>método .find()</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <script src="http://code.jquery.com/jquery-3.1.0.min.js" 
+			type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready(function() 
+      {
+        // find obtiene los descendientes 
+
+        $("p").find("span").css("color", "red");
+      });
+    </script>
+  </head>
+<body>
+  <p>Esto es un texto <span>que contiene span</span> y este otro <span>también lo contiene</span>
+    <li>uno</li> </p>
+</body>
+</html>

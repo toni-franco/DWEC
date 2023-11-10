@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ejemplo selectores combinados</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(function() 
+	{
+		//   .  = Clase
+		//   li = Tag li
+           $(".libro.inactivo").css("display","none");  //los tag que tienen dos clases  
+           $("li.inactivo").css("color", "red");	// tag=li y clase=inactivo
+	   $("li.libro").css("color", "blue");		// tag=li y clase=libro 
+	});
+	</script>
+  </head>
+<body>
+  <h1>Lista de libros</h1>
+  <p class="libro">Libros y CD's</p>
+  <ul>
+    <li class="libro">La isla del tesoro</li>
+    <li class="libro">Los miserables</li>
+    <li class="libro inactivo">El traidor</li>
+    <li class="libro">Canción de cuna</li>
+  </ul>
+  <p class="libro inactivo">Esto no sale</p>
+
+</body>
+</html>

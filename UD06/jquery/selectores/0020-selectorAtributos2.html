@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>selector de atributos $=</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(function() 
+	  {
+        $("div[id$='-entrada']").css(                   // Todo lo que en una parte del ID tiene "entrada" 
+        {
+          "margin":"5px", "border":"1px solid #ccc",
+          "width": "300px", "background-color" : "red"
+        });
+      }); 
+    </script>
+  </head>
+<body>
+  <div id="primera-entrada">
+    Texto de la primera entrada
+  </div>
+  <div id="segunda-entrada">
+    Texto de la segunda entrada
+  </div>
+  <div id="tercera-entradas">
+    Texto de la tercera entrada
+  </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Trabajando con eventos de teclado en jQuery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#mitexto").keypress(function(e){
+		e.preventDefault();
+		$("#loescrito").html(e.which + ": " + String.fromCharCode(e.which))
+	});
+})
+</script>
+
+</head>
+<body>
+    <h1>Eventos de teclado en jQuery</h1>
+	<h2>Averiguar qué tecla se está pulsando</h2>
+	<form>
+		<textarea cols=300 rows=2 id="mitexto">Escribe algo aquí!</textarea>
+		<br>
+		<b>Tecla pulsada:</b>
+		<br>
+		<div id="loescrito"></div>
+	</form>
+</body>
+</html>

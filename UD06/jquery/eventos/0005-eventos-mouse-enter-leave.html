@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Trabajando con eventos - Tip simple</title>
+<style type="text/css">
+	.tip{
+		background-color: #ffcc99;
+		padding: 10px;
+		display: none;
+		position: absolute;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#elemento1").mouseenter(function(e){
+		$("#tip1").css("left", e.pageX + 5);
+		$("#tip1").css("top", e.pageY + 5);
+		$("#tip1").css("display", "block");
+	});
+	$("#elemento1").mouseleave(function(e){
+		$("#tip1").css("display", "none");
+	});
+	
+	$("#elemento2").mouseenter(function(e){
+		$("#tip2").css("left", e.pageX + 5);
+		$("#tip2").css("top", e.pageY + 5);
+		$("#tip2").css("display", "block");
+	});
+	$("#elemento2").mouseleave(function(e){
+		$("#tip2").css("display", "none");
+	});
+})
+</script>
+
+</head>
+<body>
+    <h1>Trabajando con eventos en jQuery</h1>
+	
+	<div id="elemento1" style="background-color: #ccccff; padding: 5px;">Pasa el ratón por encima de este "elemento1".</div>
+	<p>
+		Este texto es para poner <a id="elemento2" href="#">otro elemento con tip</a>.
+	</p>
+	
+	<div class="tip" id="tip1">Esto es para explicar algo sobre el elemento1</div>
+	<div class="tip" id="tip2">Explico mejor este otro elemento con tip!!</div>
+</body>
+</html>

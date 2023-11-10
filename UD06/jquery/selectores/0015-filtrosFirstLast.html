@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>filtros first y last</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <style>
+      ol { width:200px;font-family:arial; }
+      ul { width:200px;font-family:arial; }
+      ul li a { text-decoration:none; }
+    </style>
+  <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(function() 
+	  {
+       		 $('div li:first').css('border-top','1px solid blue');
+		 $('ul li:last').css('border-bottom','1px solid red');
+		 $('ol li:last').css('border-bottom','1px solid red');
+      }); 
+    </script>
+  </head>
+<body>
+  <p> Lista desordenada </p>
+  <div id='menu0'>
+    <ul>
+      <li><a href='/index'>Home</a></li>
+      <li><a href='/about'>About Us</a></li>
+      <li><a href='/customer-service'>Customer Service</a></li>
+      <li><a href='/contact'>Contact Us</a></li>
+      <li><a href='/coupons'>Coupons</a></li>
+    </ul>
+  </div>
+  <p> Lista ordenada </p>
+  <div id='menu1'>
+    <ol>
+      <li><a href='/index'>Home</a></li>
+      <li><a href='/contact'>Contact Us</a></li>
+      <li><a href='/coupons'>Coupons</a></li>
+    </ol>
+  </div>
+  <br>
+</body>
+</html>

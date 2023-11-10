@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ejemplo selector adyacente</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(function() 
+	{
+     	  $("h1+h2").css("color", "red"); // Hermanos: h1 y h2 seguidos y en orden.
+	});
+	</script>
+  </head>
+<body>
+  <h1>Titulo1</h1>
+  <h2>Subtítulo</h2>
+  <p>texto del subtítulo</p>
+  <h2>Otro subtítulo</h2>
+  <h1>Titulo3</h1>
+  <h1>Titulo4</h1>
+  <h2>subtítulo4</h2>
+
+</body>
+</html>

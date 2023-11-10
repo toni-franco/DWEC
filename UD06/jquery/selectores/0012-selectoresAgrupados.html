@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ejemplo selectores agrupados</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(function() 
+	{
+      $("h1, .parrafo, #destacado, p > span").css("color", "red"); //Separados por ","
+	});
+	</script>
+  </head>
+<body>
+  <h1>Título principal</h1>
+  <p class="parrafo">texto destacado</p>
+  <p>El texto <span>rojo</span> lo marco con span </p>
+  <p><strong id="destacado">Esto si es rojo</strong></p>
+  <p><strong id="nodestacado"><pan>Esto</span> no es rojo</strong></p>
+</body>
+</html>
